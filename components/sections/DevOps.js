@@ -1,4 +1,7 @@
+"use client";
+
 import SectionShell from "@/components/ui/SectionShell";
+import { GitHubCalendar } from 'react-github-calendar';
 import Reveal from "@/components/ui/Reveal";
 import Tag from "@/components/ui/Tag";
 import { Gauge, Route, Cpu } from "lucide-react";
@@ -76,6 +79,45 @@ export default function DevOps() {
                 </div>
               ))}
             </dl>
+          </div>
+        </Reveal>
+
+      {/* Tablero de Actividad de GitHub */}
+        <Reveal>
+          <div className="w-full overflow-hidden rounded-2xl border border-line bg-surface/60 p-8 flex flex-col items-center gap-6 mt-16">
+            <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+              <div>
+                <h3 className="font-display text-2xl font-medium text-ink">Actividad en Código</h3>
+                <p className="text-sm text-ink-dim mt-1">Contribuciones a repositorios y proyectos</p>
+              </div>
+              <a 
+                href="https://github.com/kpt3o" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-xs text-ink-faint hover:text-dev transition-colors underline underline-offset-4"
+              >
+                Ver en GitHub
+              </a>
+            </div>
+            
+            <div className="w-full overflow-x-auto pb-4 flex justify-center">
+              <GitHubCalendar 
+                username="kpt3o" 
+                colorScheme="dark"
+                theme={{
+                  dark: [
+                    '#05070b', // Nivel 0: Fondo base
+                    '#1a2e38', // Nivel 1: Azul muy tenue
+                    '#2a5a6b', // Nivel 2: Azul medio
+                    '#3a8b9e', // Nivel 3: Azul intenso
+                    '#63d9f2'  // Nivel 4: Cian eléctrico brillante
+                  ]
+                }}
+                labels={{
+                  totalCount: '{{count}} contribuciones en el último año',
+                }}
+              />
+            </div>
           </div>
         </Reveal>
       </div>
