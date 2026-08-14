@@ -1,33 +1,33 @@
 import SectionShell from "@/components/ui/SectionShell";
 import Reveal from "@/components/ui/Reveal";
-import { Video, Mic, Workflow } from "lucide-react";
+import { Video, Mic, Workflow, Eye } from "lucide-react";
 
-const SERVICES = [
+const REELS = [
   {
-    icon: Video,
-    title: "Edición de reels",
-    desc: "Ritmo, corte y color pensados para retener desde los primeros segundos.",
+    id: "DOg4_pGj1Uj", 
+    platform: "instagram",
+    title: "Ciberseguridad en el día a día",
+    breakdown: "Ritmo acelerado con cortes precisos en los primeros 3 segundos. Se eliminaron silencios y se aplicó corrección de color para dar un tono más 'hacker'. La retención se mantuvo por encima de la media al usar subtítulos dinámicos.",
+    views: "8,000,000",
+    statLabel: "Vistas orgánicas"
   },
   {
-    icon: Mic,
-    title: "Podcasts",
-    desc: "Limpieza de audio, multicámara y capítulos listos para publicar.",
+    id: "DbtUZM4h8-4",
+    platform: "instagram",
+    title: "Formato Podcast (Winnie Suku)",
+    breakdown: "Sincronización multicámara y limpieza de ruido de fondo. El enfoque visual estuvo en alternar planos cada vez que el tono de la conversación subía de intensidad, guiando la atención del usuario.",
+    views: "45,000", // Cambia esto por las vistas reales
+    statLabel: "Vistas orgánicas"
   },
   {
-    icon: Workflow,
-    title: "Flujos de postproducción",
-    desc: "Organización de proyecto y plantillas que escalan con el volumen de entregas.",
-  },
+    id: "1CszNgf54LlVMnSiRzuKNCori3Omiw3MP",
+    platform: "gdrive",
+    title: "Proyecto Destacado",
+    breakdown: "Transiciones fluidas con enmascaramiento y tracking de movimiento. Se integraron gráficos en pantalla (B-roll) para ilustrar los componentes técnicos sin perder el hilo narrativo del presentador.",
+    views: "Top 1%", // Puedes poner un número o una métrica de retención
+    statLabel: "En retención visual"
+  }
 ];
-
-function Stat({ value, label }) {
-  return (
-    <div>
-      <p className="font-display text-3xl font-semibold text-edit">{value}</p>
-      <p className="mt-1 max-w-[8rem] text-xs text-ink-faint">{label}</p>
-    </div>
-  );
-}
 
 export default function Postproduction() {
   return (
@@ -38,50 +38,67 @@ export default function Postproduction() {
       title="Cada corte defiende una idea."
       tone="edit"
     >
-      <div className="space-y-16">
+      <div className="space-y-20">
         
-        {/* Reel de Instagram incrustado */}
-        <Reveal>
-          <div className="flex justify-center w-full">
-            <iframe
-              src="https://www.instagram.com/reel/DOg4_pGj1Uj/embed"
-              width="320"
-              height="540"
-              frameBorder="0"
-              scrolling="no"
-              allowFullScreen
-              className="rounded-2xl shadow-lg border border-line bg-surface"
-            ></iframe>
-          </div>
-        </Reveal>
+        {/* Cuadrícula de 3 Videos con Breakdowns y Contadores */}
+        <div className="grid gap-12 lg:grid-cols-3">
+          {REELS.map((reel, i) => (
+            <Reveal key={reel.id} delay={i * 0.1}>
+              <div className="flex flex-col gap-6">
+                
+                {/* Contenedor del Iframe condicionado por plataforma */}
+                <div className="flex justify-center w-full overflow-hidden rounded-2xl border border-line bg-surface">
+                  {reel.platform === "instagram" ? (
+                    <iframe
+                      src={`https://www.instagram.com/p/${reel.id}/embed`}
+                      width="100%"
+                      height="540"
+                      frameBorder="0"
+                      scrolling="no"
+                      allowFullScreen
+                      className="w-full max-w-[320px]"
+                    ></iframe>
+                  ) : (
+                    <iframe
+                      src={`https://drive.google.com/file/d/${reel.id}/preview`}
+                      width="100%"
+                      height="540"
+                      frameBorder="0"
+                      allow="autoplay"
+                      allowFullScreen
+                      className="w-full max-w-[320px]"
+                    ></iframe>
+                  )}
+                </div>
+                
+                {/* Breakdown de edición y Contador de vistas */}
+                <div className="space-y-4 px-2">
+                  <h3 className="font-display text-xl font-medium text-ink">
+                    {reel.title}
+                  </h3>
+                  <p className="text-sm text-ink-dim leading-relaxed">
+                    {reel.breakdown}
+                  </p>
+                  
+                  {/* UI del Contador */}
+                  <div className="pt-4 border-t border-line/50 flex flex-col gap-1">
+                    <div className="flex items-center gap-2 text-edit">
+                      <Eye size={20} />
+                      <p className="font-display text-2xl font-semibold">
+                        {reel.views}
+                      </p>
+                    </div>
+                    <p className="text-xs text-ink-faint uppercase tracking-wider pl-7">
+                      {reel.statLabel}
+                    </p>
+                  </div>
 
-        <div className="grid gap-10 sm:grid-cols-3">
-          {SERVICES.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.05}>
-              <s.icon size={20} className="text-edit" />
-              <h3 className="mt-4 font-display text-lg font-medium text-ink">{s.title}</h3>
-              <p className="mt-2 text-sm text-ink-dim">{s.desc}</p>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
 
-        <Reveal>
-          <div className="rounded-2xl border border-line bg-surface/60 p-8">
-            <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-center">
-              <div>
-                <p className="eyebrow mb-3 text-ink-faint">Caso de éxito</p>
-                <h3 className="font-display text-2xl font-medium text-ink">Winnie Suku</h3>
-                <p className="mt-2 max-w-md text-sm text-ink-dim">
-                  Edición semanal de contenido para redes, de grabación a entrega lista para publicar.
-                </p>
-              </div>
-              <div className="flex gap-8">
-                <Stat value="48h" label="grabación → entrega" />
-                <Stat value="+2×" label="retención promedio" />
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </SectionShell>
   );
