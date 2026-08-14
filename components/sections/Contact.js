@@ -4,9 +4,9 @@ import Reveal from "@/components/ui/Reveal";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 const LINKS = [
-  { label: "GitHub", href: "https://github.com/tu-usuario", icon: ArrowUpRight, external: true },
-  { label: "LinkedIn", href: "https://linkedin.com/in/tu-usuario", icon: ArrowUpRight, external: true },
-  { label: "Correo", href: "mailto:hola@tudominio.com", icon: Mail, external: false },
+  { label: "GitHub", href: "https://github.com/kpt3o", icon: ArrowUpRight, external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/andrish-landau-93070528b/", icon: ArrowUpRight, external: true },
+  { label: "Correo", href: "mailto:andrishandrish@gmail.com", icon: Mail, external: false },
 ];
 
 export default function Contact() {
