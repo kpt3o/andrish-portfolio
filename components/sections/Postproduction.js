@@ -1,6 +1,6 @@
 import SectionShell from "@/components/ui/SectionShell";
 import Reveal from "@/components/ui/Reveal";
-import { CirclePlay, Video, Mic, Workflow } from "lucide-react";
+import { Video, Mic, Workflow } from "lucide-react";
 
 const SERVICES = [
   {
@@ -39,22 +39,19 @@ export default function Postproduction() {
       tone="edit"
     >
       <div className="space-y-16">
+        
+        {/* Reel de Instagram incrustado */}
         <Reveal>
-          <div className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-line bg-surface">
-            <div
-              className="absolute inset-0 opacity-70"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(180deg, rgba(242,166,90,0.07) 0px, rgba(242,166,90,0.07) 1px, transparent 1px, transparent 3px)",
-              }}
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-              <span className="flex h-16 w-16 items-center justify-center rounded-full border border-edit/50 text-edit transition-transform duration-300 group-hover:scale-110">
-                <CirclePlay size={28} />
-              </span>
-              <p className="eyebrow text-ink-faint">Demo Reel — próximamente</p>
-            </div>
-            <p className="eyebrow absolute bottom-5 left-6 text-ink-faint">Andrish Experience</p>
+          <div className="flex justify-center w-full">
+            <iframe
+              src="https://www.instagram.com/reel/DOg4_pGj1Uj/embed"
+              width="320"
+              height="540"
+              frameBorder="0"
+              scrolling="no"
+              allowFullScreen
+              className="rounded-2xl shadow-lg border border-line bg-surface"
+            ></iframe>
           </div>
         </Reveal>
 
@@ -75,8 +72,7 @@ export default function Postproduction() {
                 <p className="eyebrow mb-3 text-ink-faint">Caso de éxito</p>
                 <h3 className="font-display text-2xl font-medium text-ink">Winnie Suku</h3>
                 <p className="mt-2 max-w-md text-sm text-ink-dim">
-                  Edición semanal de contenido para redes, de grabación a entrega lista para
-                  publicar.
+                  Edición semanal de contenido para redes, de grabación a entrega lista para publicar.
                 </p>
               </div>
               <div className="flex gap-8">
@@ -84,9 +80,6 @@ export default function Postproduction() {
                 <Stat value="+2×" label="retención promedio" />
               </div>
             </div>
-            <p className="mt-6 text-xs text-ink-faint">
-              * Cifras de ejemplo — reemplázalas con tus resultados reales.
-            </p>
           </div>
         </Reveal>
       </div>

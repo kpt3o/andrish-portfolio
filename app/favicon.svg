@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#63d9f2" />
+      <stop offset="100%" stop-color="#9c8cff" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo grafito oscuro con bordes redondeados -->
+  <rect width="256" height="256" rx="56" fill="#05070b"/>
+  
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Estructura principal de la A en gradiente -->
+    <path d="M128 60 L64 188 M128 60 L192 188" stroke="url(#cyberGrad)" stroke-width="24"/>
+    
+    <!-- Barra central cruzada en ámbar (toque de postproducción) -->
+    <line x1="94" y1="140" x2="176" y2="140" stroke="#f2a65a" stroke-width="20"/>
+  </g>
+</svg>
