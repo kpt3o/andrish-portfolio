@@ -1,4 +1,5 @@
 import CanvasBackground from "@/components/canvas/CanvasBackground";
+import AiTools from "@/components/sections/AiTools";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Nav from "@/components/layout/Nav";
 import Hero from "@/components/sections/Hero";
@@ -20,6 +21,7 @@ export default function Home() {
         <Nav />
         <main className="relative z-10">
           <Hero />
+          <AiTools />
           <Cybersecurity />
           <Postproduction />
           <DevOps />

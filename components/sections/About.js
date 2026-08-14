@@ -12,7 +12,7 @@ export default function About() {
   return (
     <SectionShell
       id="sobre-mi"
-      index="04"
+      index="05"
       eyebrow="Sobre mí"
       title="Disciplina que también se nota fuera de la pantalla."
       tone="primary"

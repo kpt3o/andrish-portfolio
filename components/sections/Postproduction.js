@@ -36,7 +36,7 @@ export default function Postproduction() {
   return (
     <SectionShell
       id="edicion"
-      index="02"
+      index="03"
       eyebrow="Edición y Postproducción"
       title="Cada corte defiende una idea."
       tone="edit"

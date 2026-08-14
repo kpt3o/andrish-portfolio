@@ -13,7 +13,7 @@ export default function Contact() {
   return (
     <SectionShell
       id="contacto"
-      index="05"
+      index="06"
       eyebrow="Contacto"
       title="Hablemos de tu próximo proyecto."
       tone="primary"

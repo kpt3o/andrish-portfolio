@@ -19,7 +19,7 @@ export default function DevOps() {
   return (
     <SectionShell
       id="desarrollo"
-      index="03"
+      index="04"
       eyebrow="Desarrollo y Operaciones"
       title="Herramientas propias para problemas propios."
       tone="dev"

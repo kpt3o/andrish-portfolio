@@ -15,7 +15,7 @@ export default function Cybersecurity() {
   return (
     <SectionShell
       id="ciberseguridad"
-      index="01"
+      index="02"
       eyebrow="Ciberseguridad"
       title="Pensar como atacante para construir defensas que resisten."
       tone="primary"
