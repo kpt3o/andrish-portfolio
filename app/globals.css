@@ -1,0 +1,98 @@
+@import "tailwindcss";
+/* El CSS de Lenis se importa desde components/layout/SmoothScroll.js,
+   junto al código que realmente usa la librería. */
+
+/* ---------------------------------------------------------------
+   Sistema de diseño — Andrish Landau Miranda
+   Base: grafito-azulado espacial, no negro neutro.
+   Acento primario (cian) = identidad / ciberseguridad (su disciplina
+   principal). Ámbar y violeta se activan sólo dentro de sus propias
+   secciones (edición y desarrollo) como un cambio de "modo".
+------------------------------------------------------------------*/
+@theme {
+  --color-void: #05070b;
+  --color-void-soft: #0a0e16;
+  --color-surface: #10141d;
+  --color-surface-2: #161c28;
+  --color-line: rgba(234, 237, 243, 0.09);
+  --color-line-strong: rgba(234, 237, 243, 0.16);
+
+  --color-ink: #eef1f7;
+  --color-ink-dim: #8e97ab;
+  --color-ink-faint: #5b6376;
+
+  --color-primary: #63d9f2;
+  --color-primary-dim: #3a8fa3;
+  --color-edit: #f2a65a;
+  --color-edit-dim: #96682f;
+  --color-dev: #9c8cff;
+  --color-dev-dim: #5f54a3;
+
+  --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
+  --font-sans: "Instrument Sans", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+/* ------------------------- Base ------------------------- */
+
+html {
+  background: var(--color-void);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-void);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Scrollbar discreta, en tono con el sistema */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-2);
+  border-radius: 999px;
+  border: 2px solid var(--color-void);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Línea "//NN" — eco visual de un comentario de código, coherente con
+   el registro técnico del contenido y con el efecto glitch del hero. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
