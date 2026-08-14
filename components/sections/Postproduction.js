@@ -15,7 +15,7 @@ const REELS = [
   {
     id: "DbtUZM4h8-4",
     platform: "instagram",
-    title: "Formato Podcast (Winnie Suku)",
+    title: "Edicion para Influencers (Winnie Suku)",
     breakdown: "Agilización de contenido, mediante el uso de motion graphics, subtitulos fluidos, cortes especificos y buena velocidad de progresión",
     statValue: "179,500", // Cambia esto por la cantidad real de seguidores de Winnie
     statLabel: "Seguidores en la cuenta",
