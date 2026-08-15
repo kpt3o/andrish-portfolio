@@ -37,8 +37,7 @@ export default function Contact() {
 
       <Reveal delay={0.1}>
         <p className="mt-16 max-w-md text-sm text-ink-faint">
-          * Reemplaza estos enlaces con tus perfiles y correo reales antes de publicar el
-          sitio.
+          .
         </p>
       </Reveal>
     </SectionShell>
