@@ -1,18 +1,22 @@
-"use client";
-
 import SectionShell from "@/components/ui/SectionShell";
-import { GitHubCalendar } from 'react-github-calendar';
 import Reveal from "@/components/ui/Reveal";
-import Tag from "@/components/ui/Tag";
-import { Gauge, Route, Cpu } from "lucide-react";
+import { ExternalLink, Code2, Layout, Smartphone } from "lucide-react";
 
-const STACK = ["Notion", "Trello", "Asana", "Obsidian"];
-
-const SPECS = [
-  { label: "CPU", value: "AMD Ryzen 9 5900X" },
-  { label: "GPU", value: "Radeon RX 6800" },
-  { label: "RAM", value: "32 GB" },
-  { label: "Almacenamiento", value: "Kingston SSD" },
+const PROJECTS = [
+  {
+    title: "Psikomover",
+    client: "Clínica de Psicología",
+    description: "Plataforma digital diseñada para servicios de salud mental. Arquitectura responsiva enfocada en la accesibilidad, tiempos de carga rápidos y una experiencia de usuario (UX) que transmite profesionalismo y confianza.",
+    link: "https://psikomover.netlify.app",
+    tech: ["UI/UX", "Desarrollo Frontend", "Responsive", "Optimización web"]
+  },
+  {
+    title: "Sarah's Place",
+    client: "Bakery & Gastronomía",
+    description: "Sitio web interactivo de alto impacto visual para un negocio gastronómico. Estructurado para destacar la identidad de marca, el catálogo de productos y facilitar la conversión de clientes mediante un diseño intuitivo.",
+    link: "https://sarahsplace.netlify.app",
+    tech: ["Web Design", "HTML/CSS/JS", "Despliegue", "Performance"]
+  }
 ];
 
 export default function DevOps() {
@@ -20,106 +24,81 @@ export default function DevOps() {
     <SectionShell
       id="desarrollo"
       index="04"
-      eyebrow="Desarrollo y Operaciones"
-      title="Herramientas propias para problemas propios."
-      tone="dev"
+      eyebrow="Desarrollo Web"
+      title="Sistemas construidos para escalar."
+      tone="cyan"
     >
       <div className="space-y-16">
-        <div className="grid gap-8 md:grid-cols-2">
-          <Reveal>
-            <div className="h-full rounded-2xl border border-line bg-surface/60 p-7">
-              <Gauge size={20} className="text-dev" />
-              <h3 className="mt-4 font-display text-xl font-medium text-ink">
-                SMI Performance Tracker
-              </h3>
-              <p className="mt-3 text-sm text-ink-dim">
-                Aplicación web construida a medida para monitorear métricas de rendimiento
-                en tiempo real y centralizar reportes que antes vivían dispersos en hojas
-                de cálculo.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div className="h-full rounded-2xl border border-line bg-surface/60 p-7">
-              <Route size={20} className="text-dev" />
-              <h3 className="mt-4 font-display text-xl font-medium text-ink">Gestión y logística</h3>
-              <p className="mt-3 text-sm text-ink-dim">
-                Documentación de SOPs y planificación logística de rutas a gran escala, con
-                foco en reducir tiempos muertos y errores de comunicación entre equipos.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-
+        
         <Reveal>
-          <div>
-            <p className="eyebrow mb-4 text-ink-faint">Stack de trabajo</p>
-            <div className="flex flex-wrap gap-3">
-              {STACK.map((s) => (
-                <Tag key={s}>{s}</Tag>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div className="rounded-2xl border border-line bg-surface p-7 font-mono">
-            <p className="eyebrow mb-5 flex items-center gap-2 text-dev">
-              <Cpu size={14} />
-              hardware --setup
+          <div className="prose prose-invert max-w-3xl text-ink-dim leading-relaxed text-lg">
+            <p>
+              No solo configuro infraestructura; construyo las interfaces que interactúan con los usuarios. 
+              Desarrollo sitios web modernos, optimizados para SEO y diseñados bajo el principio de "Mobile First". 
+              Aquí tienes una muestra de mi trabajo en producción.
             </p>
-            <dl className="grid gap-3 sm:grid-cols-2">
-              {SPECS.map((spec) => (
-                <div
-                  key={spec.label}
-                  className="flex items-baseline justify-between gap-4 border-b border-line pb-2"
-                >
-                  <dt className="text-xs uppercase tracking-wide text-ink-faint">{spec.label}</dt>
-                  <dd className="text-sm text-ink">{spec.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </Reveal>
 
-      {/* Tablero de Actividad de GitHub */}
         <Reveal>
-          <div className="w-full overflow-hidden rounded-2xl border border-line bg-surface/60 p-8 flex flex-col items-center gap-6 mt-16">
-            <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-              <div>
-                <h3 className="font-display text-2xl font-medium text-ink">Actividad en Código</h3>
-                <p className="text-sm text-ink-dim mt-1">Contribuciones a repositorios y proyectos</p>
-              </div>
-              <a 
-                href="https://github.com/kpt3o" 
-                target="_blank" 
-                rel="noreferrer"
-                className="text-xs text-ink-faint hover:text-dev transition-colors underline underline-offset-4"
+          <div className="grid gap-6 lg:grid-cols-2 mt-8">
+            {PROJECTS.map((project, i) => (
+              <div 
+                key={i}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface/40 p-8 transition-all hover:bg-surface/80 hover:border-dev/50"
               >
-                Ver en GitHub
-              </a>
-            </div>
-            
-            <div className="w-full overflow-x-auto pb-4 flex justify-center">
-              <GitHubCalendar 
-                username="kpt3o" 
-                colorScheme="dark"
-                theme={{
-                  dark: [
-                    '#05070b', // Nivel 0: Fondo base
-                    '#1a2e38', // Nivel 1: Azul muy tenue
-                    '#2a5a6b', // Nivel 2: Azul medio
-                    '#3a8b9e', // Nivel 3: Azul intenso
-                    '#63d9f2'  // Nivel 4: Cian eléctrico brillante
-                  ]
-                }}
-                labels={{
-                  totalCount: '{{count}} contribuciones en el último año',
-                }}
-              />
-            </div>
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-dev/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+
+                <div className="relative z-10 space-y-6">
+                  {/* Header de la tarjeta */}
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 text-xs font-mono text-ink-faint uppercase tracking-wider mb-2">
+                        <Layout size={14} className="text-dev" />
+                        {project.client}
+                      </div>
+                      <h3 className="text-2xl font-display font-medium text-ink group-hover:text-dev transition-colors">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Descripción */}
+                  <p className="text-ink-dim leading-relaxed text-sm">
+                    {project.description}
+                  </p>
+
+                  {/* Tags de Tecnología */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="rounded-full bg-[#05070b] border border-line/50 px-3 py-1 text-xs text-ink-faint"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Botón de Enlace al final */}
+                <div className="relative z-10 mt-8 pt-6 border-t border-line/50">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-dev transition-colors"
+                  >
+                    Visitar sitio en vivo
+                    <ExternalLink size={16} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </Reveal>
+        
       </div>
     </SectionShell>
   );
