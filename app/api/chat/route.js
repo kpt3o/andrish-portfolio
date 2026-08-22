@@ -1,15 +1,27 @@
 import { NextResponse } from 'next/server';
 
+// 1. Forzamos a Vercel a ejecutar esto en tiempo real (evita bugs de caché)
+export const dynamic = 'force-dynamic'; 
+
 export async function POST(request) {
   try {
     const { prompt } = await request.json();
 
-    // Conexión a la API gratuita de Groq
+    // 2. Verificación estricta: Revisamos si Vercel realmente tiene la llave
+    const apiKey = process.env.AI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: 'CRÍTICO: Vercel no está leyendo la API Key. La variable AI_API_KEY está vacía en producción.' }, 
+        { status: 500 }
+      );
+    }
+
+    // 3. Conexión a la API de Groq
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.AI_API_KEY}` 
+        'Authorization': `Bearer ${apiKey}` 
       },
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile', 
@@ -26,7 +38,7 @@ export async function POST(request) {
             Reglas:
             - Sé directo, profesional pero con un toque tecnológico y seguro.
             - Responde en 2 o 3 párrafos cortos como máximo.
-            - Siempre cierra tu respuesta invitando al usuario a agendar una reunión, incluyendo exactamente este enlace en formato Markdown: [Agendar en Google Calendar](https://calendar.app.google/c7S6HyPr1TqjiX3w9)` 
+            - Habla en primera persona o refiriéndote a Andrish como tu creador.` 
           },
           { 
             role: 'user', 
@@ -38,9 +50,13 @@ export async function POST(request) {
 
     const data = await response.json();
     
-    // Manejo de errores si Groq rechaza la petición
-    if (data.error) {
-      throw new Error(data.error.message);
+    // 4. Manejo de errores exactos de Groq (Si la llave caducó o hay un problema)
+    if (!response.ok || data.error) {
+      const errorMessage = data.error?.message || response.statusText;
+      return NextResponse.json(
+        { error: `[Rechazo de Groq]: ${errorMessage}` }, 
+        { status: response.status }
+      );
     }
 
     const iaResponse = data.choices[0].message.content;
@@ -48,8 +64,9 @@ export async function POST(request) {
 
   } catch (error) {
     console.error("Error en el puente de IA:", error);
+    // Devuelve el error exacto a la pantalla del frontend
     return NextResponse.json(
-      { error: 'Error procesando la solicitud. Verifica tu API Key o conexión.' }, 
+      { error: `[Error de Código]: ${error.message}` }, 
       { status: 500 }
     );
   }
